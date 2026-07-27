@@ -1,0 +1,25 @@
+<h1>Salesforce Embedded Messaging Test</h1>
+
+<script type="text/javascript">
+function initEmbeddedMessaging() {
+    try {
+        embeddedservice_bootstrap.settings.language = 'en_US';
+
+        embeddedservice_bootstrap.init(
+            '00DgL00000PH0d7',
+            'Agent_Deploy',
+            'https://orgfarm-c1a5b63a6e-dev-ed.develop.my.site.com/ESWAgentDeploy1785148269593',
+            {
+                scrt2URL: 'https://orgfarm-c1a5b63a6e-dev.develop.my.salesforce-scrt.com'
+            }
+        );
+    } catch (e) {
+        console.error(e);
+    }
+}
+</script>
+
+<script
+src="https://orgfarm-c1a5b63a6e-dev-ed.develop.my.site.com/ESWAgentDeploy1785148269593/assets/js/bootstrap.min.js"
+onload="initEmbeddedMessaging()">
+</script>
