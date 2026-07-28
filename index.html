@@ -6,7 +6,8 @@
     </head>
     <body>
 		<script>
-			const key = "00DgL00000PH0d7_WEB_STORAGE";
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+				const key = "00DgL00000PH0d7_WEB_STORAGE";
 
 let data = JSON.parse(sessionStorage.getItem(key));
 
@@ -17,6 +18,8 @@ data.IS_MINIMIZED = false;
 
 // Save it back
 sessionStorage.setItem(key, JSON.stringify(data));
+			});
+			
 		</script>
 		<script type='text/javascript'>
 	function initEmbeddedMessaging() {
