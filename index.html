@@ -6,23 +6,26 @@
     </head>
     <body>
 		<script>
-function openChat() {
-    const interval = setInterval(() => {
-        const launcher = document.querySelector('[data-testid="embeddedMessagingConversationButton"]')
-            || document.querySelector('.embeddedMessagingConversationButton')
-            || document.querySelector('button[aria-label*="Chat"]');
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+    waitForLauncher();
+});
+
+function waitForLauncher() {
+    const timer = setInterval(() => {
+        const launcher = document.querySelector(".embeddedMessagingConversationButton");
 
         if (launcher) {
-            clearInterval(interval);
-            launcher.click();
+            clearInterval(timer);
+
+            // Prevent opening multiple times
+            if (!sessionStorage.getItem("chatOpened")) {
+                launcher.click();
+                sessionStorage.setItem("chatOpened", "true");
+            }
         }
     }, 500);
 }
-
-window.addEventListener("onEmbeddedMessagingReady", () => {
-    openChat();
-});
-</script>
+		</script>
 		<script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
