@@ -6,25 +6,17 @@
     </head>
     <body>
 		<script>
-			window.addEventListener("onEmbeddedMessagingReady", () => {
-    waitForLauncher();
-});
+			const key = "00DgL00000PH0d7_WEB_STORAGE";
 
-function waitForLauncher() {
-    const timer = setInterval(() => {
-        const launcher = document.querySelector(".embeddedMessagingConversationButton");
+let data = JSON.parse(sessionStorage.getItem(key));
 
-        if (launcher) {
-            clearInterval(timer);
+console.log(data);
 
-            // Prevent opening multiple times
-            if (!sessionStorage.getItem("chatOpened")) {
-                launcher.click();
-                sessionStorage.setItem("chatOpened", "true");
-            }
-        }
-    }, 500);
-}
+// Change minimized state
+data.IS_MINIMIZED = false;
+
+// Save it back
+sessionStorage.setItem(key, JSON.stringify(data));
 		</script>
 		<script type='text/javascript'>
 	function initEmbeddedMessaging() {
